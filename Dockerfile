@@ -6,5 +6,6 @@ MAINTAINER Andy PP "https://github.com/andypp"
 RUN yum -y update
 
 # Copy java installer
-ADD jdk.rpm /tmp/jdk.rpm
-RUN yum install -y /tmp/jdk.rpm
+ADD jdk.gz /tmp/
+RUN mv /tmp/jdk* /opt/jdk
+RUN alternatives --install /usr/bin/java java /opt/jdk/bin/java 1
